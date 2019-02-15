@@ -65,7 +65,12 @@
                 regexObj: {
                     email: '^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$',
                     mobile: '^(86){0,1}1[3-9]{1}\\d{9}$',
-                    bankcard: '^\\d{15,19}$'
+                    bankcard: '^\\d{15,19}$',
+                    money:'^(([1-9]\d{0,9})|0)(\.\d{1,2})?$',
+                    cnmoney:'^(([1-9]\d{0,9})|0)(\.\d{1,2})?$',
+                    brmoney:'^(([1-9]\d{0,9})|0)(\.\d{1,2})?$',
+                    cpf:'^\\d{11}$',
+                    zipcode:'^\\d{8}$'
                 }
             }
         },
@@ -195,6 +200,40 @@
                     this.$emit('input', this.currentValue.replace(/\s/g, ''));
                     return;
                 }
+                if (this.regex === 'money'){
+                    var zero_regex =/^[0]+/
+                    this.currentValue=this.currentValue.replace(zero_regex,"");
+                    this.currentValue=this.currentValue.replace(/[a-zA-Z]/g,"");
+                    this.$emit('input', this.currentValue.replace(/\s/g, ''));
+                    return;
+                }
+                if (this.regex === 'cpf'){
+                    this.currentValue=this.currentValue.replace(/[^0-9]/g, '');
+                    if (/^[0-9]{4,9}$/.test(this.currentValue)) {
+                        this.currentValue = this.currentValue.replace(/\s/g, '').replace(/(\d{3})(?=\d)/g, "$1.");
+                    }else if(this.currentValue.length > 9){
+                        if(this.currentValue.length > 11){
+                            this.currentValue = this.currentValue.substring(0,11);
+                        }else{
+                            this.currentValue = this.currentValue.substring(0,9).replace(/\s/g, '').replace(/(\d{3})(?=\d)/g, "$1.")+"-"+this.currentValue.substring(9);
+                        }
+                    }
+                    this.$emit('input', this.currentValue.replace(/\s/g, ''));
+                }
+                if (this.regex === 'zipcode'){
+                    this.currentValue=this.currentValue.replace(/[^0-9]/g, '');
+                    if (/^[0-9]{4,9}$/.test(this.currentValue)) {
+                        this.currentValue = this.currentValue.replace(/\s/g, '').replace(/(\d{3})(?=\d)/g, "$1.");
+                    }else if(this.currentValue.length > 9){
+                        if(this.currentValue.length > 11){
+                            this.currentValue = this.currentValue.substring(0,11);
+                        }else{
+                            this.currentValue = this.currentValue.substring(0,9).replace(/\s/g, '').replace(/(\d{3})(?=\d)/g, "$1.")+"-"+this.currentValue.substring(9);
+                        }
+                    }
+                    this.$emit('input', this.currentValue.replace(/\s/g, ''));
+                }
+
                 this.$emit('input', this.currentValue);
             },
             setError(error, code) {

@@ -3,7 +3,7 @@
         <div class="yd-confirm yd-alert">
             <div class="yd-confirm-bd" v-html="mes"></div>
             <div class="yd-confirm-ft">
-                <a href="javascript:;" class="yd-confirm-btn primary" @click.stop="closeAlert">确定</a>
+                <a href="javascript:;" class="yd-confirm-btn primary" @click.stop="closeAlert">{{btn_mes}}</a>
             </div>
         </div>
     </div>
@@ -13,6 +13,7 @@
     export default {
         props: {
             mes: String,
+            btn_mes: String,
             callback: Function
         }
     }

@@ -35,6 +35,8 @@ ConfirmConstructor.prototype.closeConfirm = function (stay, callback) {
 const Confirm = (options = {}) => {
     instance.mes = options.mes || '';
     instance.title = options.title || '提示';
+    instance.cancel_mes = options.cancel_mes || '取消';
+    instance.ok_mes = options.ok_mes || '确定';
     instance.opts = options.opts;
 
     window.addEventListener("hashchange", hashChange);

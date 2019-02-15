@@ -1,12 +1,12 @@
 <template>
     <div class="yd-dialog-black-mask">
         <div class="yd-confirm">
-            <div class="yd-confirm-hd"><strong class="yd-confirm-title" v-html="title"></strong></div>
+            <div class="yd-confirm-hd" style="text-align: center"><strong class="yd-confirm-title" v-html="title"></strong></div>
             <div class="yd-confirm-bd" v-html="mes"></div>
             <template v-if="typeof opts == 'function'">
                 <div class="yd-confirm-ft">
-                    <a href="javascript:;" class="yd-confirm-btn default" @click.stop="closeConfirm(false)">取消</a>
-                    <a href="javascript:;" class="yd-confirm-btn primary" @click.stop="closeConfirm(false, opts)">确定</a>
+                    <a href="javascript:;" class="yd-confirm-btn default" @click.stop="closeConfirm(false)">{{cancel_mes}}</a>
+                    <a href="javascript:;" class="yd-confirm-btn primary" @click.stop="closeConfirm(false, opts)">{{ok_mes}}</a>
                 </div>
             </template>
             <template v-else>
@@ -30,6 +30,8 @@
         props: {
             title: String,
             mes: String,
+            cancel_mes: String,
+            ok_mes: String,
             opts: {
                 type: [Array, Function],
                 default: () => {

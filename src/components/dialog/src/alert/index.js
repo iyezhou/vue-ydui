@@ -28,6 +28,7 @@ AlertConstructor.prototype.closeAlert = function () {
 
 const Alert = (options = {}) => {
     instance.mes = options.mes;
+    instance.btn_mes = options.btn_mes;
     instance.callback = options.callback;
 
     window.addEventListener("hashchange", hashChange);
