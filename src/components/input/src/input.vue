@@ -164,10 +164,10 @@
 
                 var v = this.regex === 'bankcard' ? val.replace(/\s/g, '') : '';
                 var reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
-                console.log(v)
-                console.log(reg)
+                //console.log(v)
+                //console.log(reg)
                 if (!!v && this.regex && !new RegExp(reg).test(v)) {
-                    console.log('BankCard不符合规则')
+                    //console.log('BankCard不符合规则')
                     this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
                     this.iserror = true;
                     return;
@@ -175,10 +175,10 @@
 
                 v = this.regex === 'cpf' ? val.replace(/\.|\-/g, '') : '';
                 reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
-                console.log(v)
-                console.log(reg)
+                //console.log(v)
+                //console.log(reg)
                 if (!!v && this.regex && !new RegExp(reg).test(v)) {
-                    console.log('CPF不符合规则')
+                    //console.log('CPF不符合规则')
                     this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
                     this.iserror = true;
                     return;
