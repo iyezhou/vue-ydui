@@ -170,9 +170,12 @@
                     return;
                 }
 
-                v = this.regex === 'cpf' ? val.replace(/\.|\-/g,"") : val;
+                v = this.regex === 'cpf' ? val.replace(/\.|\-/g, '') : val;
                 reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
+                console.log(v)
+                console.log(reg)
                 if (!!v && this.regex && !new RegExp(reg).test(v)) {
+                    console.log('CPF不符合规则')
                     this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
                     this.iserror = true;
                     return;
