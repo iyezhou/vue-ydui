@@ -162,8 +162,16 @@
                     return;
                 }
 
-                const v = this.regex === 'bankcard' ? val.replace(/\s/g, '') : val;
-                const reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
+                var v = this.regex === 'bankcard' ? val.replace(/\s/g, '') : val;
+                var reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
+                if (!!v && this.regex && !new RegExp(reg).test(v)) {
+                    this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
+                    this.iserror = true;
+                    return;
+                }
+
+                v = this.regex === 'cpf' ? val.replace(/\.|\-/g,"") : val;
+                reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
                 if (!!v && this.regex && !new RegExp(reg).test(v)) {
                     this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
                     this.iserror = true;
