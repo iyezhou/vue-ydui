@@ -162,7 +162,7 @@
                     return;
                 }
 
-                var v = this.regex === 'bankcard' ? val.replace(/\s/g, '') : val;
+                var v = this.regex === 'bankcard' ? val.replace(/\s/g, '') : '';
                 var reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
                 console.log(v)
                 console.log(reg)
@@ -173,7 +173,7 @@
                     return;
                 }
 
-                v = this.regex === 'cpf' ? val.replace(/\.|\-/g, '') : val;
+                v = this.regex === 'cpf' ? val.replace(/\.|\-/g, '') : '';
                 reg = this.regexObj[this.regex] ? this.regexObj[this.regex] : this.trim(this.regex, '/');
                 console.log(v)
                 console.log(reg)
